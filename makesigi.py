@@ -12,6 +12,9 @@ import ghidra.program.model.lang.OperandType as OperandType
 import ghidra.program.model.lang.Register as Register
 import ghidra.program.model.address.AddressSet as AddressSet
 
+MINIMUM_SIGNATURE_LENGTH = 11
+HIGH_MATCH_THRESHOLD = 5
+
 BytePattern = collections.namedtuple('BytePattern', ['is_wildcard', 'byte'])
 
 def __bytepattern_ida_str(self):
@@ -74,6 +77,8 @@ def cleanupWilds(byte_pattern):
 		del byte_pattern[-1]
 
 def gensig():
+	extended_sig = False
+	extended_highmatch = False
 	fm = currentProgram.getFunctionManager()
 	fn = fm.getFunctionContaining(currentAddress)
 	cm = currentProgram.getCodeManager()
@@ -115,7 +120,17 @@ def gensig():
 			matches = findBytes(matches[0] if len(matches) else None, pattern, match_limit)
 
 		if len(matches) < 2:
-			break
+			# add instructions if the sig isn't long enough
+			if len(byte_pattern) > MINIMUM_SIGNATURE_LENGTH and extended_sig:
+				if prev_matches < HIGH_MATCH_THRESHOLD or extended_highmatch:
+					break
+				extended_highmatch = True
+			# grab one additional instruction even if we are already at the min sig length
+			extended_sig = True
+
+		# store how much overlap there was before we reached a unique sig
+		if len(matches) > 1:
+			prev_matches = len(matches)
 
 	if not len(matches) == 1:
 		print(*(b.ida_str() for b in byte_pattern))
