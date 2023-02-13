@@ -7,4 +7,4 @@ Export function names from a binary with symbols and use the data to restore the
 
 ### makesigi.py
 
-Immediately generate a SourceMod-ready signature at the start of the current function. The goal for this script is to have the same masking strategy as the original IDA makesig.idc. It's based on the original Ghidra conversion script by nosoop (https://github.com/nosoop/ghidra_scripts).
+Immediately generate a SourceMod-ready signature at the start of the current function. The goal for this script is to have the same masking strategy as the original IDA makesig.idc. It's based on the converted Ghidra script by nosoop (https://github.com/nosoop/ghidra_scripts).
