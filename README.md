@@ -19,4 +19,5 @@ Export function names from a binary with symbols and use the data to restore the
 | Script  | Number of Functions Matched (CS:GO server binary 15 Feb. 2023)|
 | ------------- | ------------- |
 | symbolsmasher.py  | ~3450  |
-| stringsigs.py  | ~1650 individually or ~+300 after running symbolsmasher.py  |
+| stringsigs.py  | ~1600 individually or ~+250 after running symbolsmasher.py  |
+Total FUN_ in the binary: ~60,000
