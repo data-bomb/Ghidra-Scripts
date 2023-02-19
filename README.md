@@ -14,6 +14,8 @@ Export function names and string signatures from a binary with symbols and use t
 Export function names from a binary with symbols and use the data to restore the function names in a similar binary without symbols. The technique is currently based on unique string cross-references, but it may be possible to play a game of Ghidra-soduku building off the information here. The name for the script is credited to Scags who made an IDA script for the same purpose (https://github.com/Scags/IDA-Scripts).
 
 
+
+
 | Script  | Number of Functions Matched (CS:GO Binary 2/15/2023 is used)|
 | ------------- | ------------- |
 | symbolsmasher.py  | ~3450  |
