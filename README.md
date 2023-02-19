@@ -20,4 +20,5 @@ Export function names from a binary with symbols and use the data to restore the
 | ------------- | ------------- |
 | symbolsmasher.py  | ~3450  |
 | stringsigs.py  | ~1600 individually or ~+250 after running symbolsmasher.py  |
+
 Total FUN_ in the binary: ~60,000
